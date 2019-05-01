@@ -5,6 +5,7 @@ import ResponseModels.LoginStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Url {
@@ -23,38 +24,40 @@ public class Url {
         if (instanceCount > 1) {
             logger.warn("Multiple Url instances created. Keep only 1 instance so that Url.instance points correctly");
         }
+        this.httpUrlMap = new HashMap<>();
+        this.base_url = BaseUrl.REMOTE;
         Url.instance = this;
         logger.debug("Url.instance pointing to a new Url instance");
     }
 
-    private Map<String, Http> http;
+    private Map<String, Http> httpUrlMap;
     private BaseUrl base_url;
 
     public String get(String key) throws UrlNotDefinedException {
         validateUrlNotNull(this.base_url.getUrl());
-        validateNotNull(key, this.http.get(key));
-        String url = this.http.get(key).url;
+        validateNotNull(key, this.httpUrlMap.get(key));
+        String url = this.httpUrlMap.get(key).url;
         validateUrlNotNull(url);
         return this.base_url.getUrl().concat(url);
     }
 
     public Class getResponseClass(String key) {
-        validateNotNull(key, this.http.get(key));
-        return this.http.get(key).response;
+        validateNotNull(key, this.httpUrlMap.get(key));
+        return this.httpUrlMap.get(key).response;
     }
 
     public void changeBaseUrl(BaseUrl newBaseUrl) {
-        logger.warn("Changing baseUrl to: %s", newBaseUrl.name());
+        logger.warn("Changing baseUrl to: {}", newBaseUrl.name());
         this.base_url = newBaseUrl;
     }
 
     public void updateUrl(String urlName, String url, Class responseClass) {
-        logger.warn("Url %s is updated. New urlString: %s, responseClass: %s", urlName, url, responseClass.getSimpleName());
+        logger.warn("Url {} is updated. New urlString: {}, responseClass: {}", urlName, url, responseClass.getSimpleName());
         Http http = new Http();
         http.url = url;
         http.response = responseClass;
 
-        this.http.put(urlName, http);
+        this.httpUrlMap.put(urlName, http);
     }
 
     private void validateUrlNotNull(String url) throws UrlNotDefinedException {
@@ -65,7 +68,7 @@ public class Url {
 
     private void validateNotNull(String key, Http http) {
         if (http == null) {
-            throw new NullPointerException(String.format("Object associated with key %s is null/empty", key));
+            throw new NullPointerException(String.format("Object associated with key {} is null/empty", key));
         }
     }
 

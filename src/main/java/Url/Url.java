@@ -1,7 +1,9 @@
 package Url;
 
+import ConfigurationManagement.impl.ConfigFile.JsonClassAdapter;
 import ResponseModels.Login;
 import ResponseModels.LoginStatus;
+import com.google.gson.annotations.JsonAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,23 +13,18 @@ import java.util.Map;
 public class Url {
 
     private static Logger logger = LoggerFactory.getLogger(Url.class.getSimpleName());
-    public static Url instance;
-    private static int instanceCount = 0;
 
     private class Http {
         String url;
+
+        @JsonAdapter(JsonClassAdapter.class)
         Class response;
     }
 
     public Url() {
-        instanceCount ++;
-        if (instanceCount > 1) {
-            logger.warn("Multiple Url instances created. Keep only 1 instance so that Url.instance points correctly");
-        }
+        logger.debug("Creating new Url class");
         this.httpUrlMap = new HashMap<>();
         this.base_url = BaseUrl.REMOTE;
-        Url.instance = this;
-        logger.debug("Url.instance pointing to a new Url instance");
     }
 
     private Map<String, Http> httpUrlMap;

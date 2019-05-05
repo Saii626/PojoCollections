@@ -14,7 +14,7 @@ public class Url {
 
     private static Logger logger = LoggerFactory.getLogger(Url.class.getSimpleName());
 
-    private class Http {
+    private static class Http {
         String url;
 
         @JsonAdapter(JsonClassAdapter.class)
@@ -65,7 +65,7 @@ public class Url {
 
     private void validateNotNull(String key, Http http) {
         if (http == null) {
-            throw new NullPointerException(String.format("Object associated with key {} is null/empty", key));
+            throw new NullPointerException(String.format("Object associated with key %s is null/empty", key));
         }
     }
 

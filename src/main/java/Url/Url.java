@@ -21,14 +21,16 @@ public class Url {
         Class response;
     }
 
+    private Map<String, Http> httpUrlMap;
+    private BaseUrl base_url;
+    private SocketBaseUrl socketBaseUrl;
+
     public Url() {
         logger.debug("Creating new Url class");
         this.httpUrlMap = new HashMap<>();
         this.base_url = BaseUrl.REMOTE;
+        this.socketBaseUrl = SocketBaseUrl.REMOTE;
     }
-
-    private Map<String, Http> httpUrlMap;
-    private BaseUrl base_url;
 
     public String get(String key) throws UrlNotDefinedException {
         validateUrlNotNull(this.base_url.getUrl());
@@ -41,6 +43,10 @@ public class Url {
     public Class getResponseClass(String key) {
         validateNotNull(key, this.httpUrlMap.get(key));
         return this.httpUrlMap.get(key).response;
+    }
+
+    public String getSocketBaseUrl() {
+        return this.socketBaseUrl.getUrl();
     }
 
     public void changeBaseUrl(BaseUrl newBaseUrl) {
@@ -75,9 +81,6 @@ public class Url {
         url.updateUrl("login", "/login", Login.class);
         url.updateUrl("logout", "/logout", Login.class);
         url.updateUrl("loggedInUser", "/getLoggedInUser", LoginStatus.class);
-
-        url.changeBaseUrl(BaseUrl.REMOTE);
-
         return url;
     }
 }

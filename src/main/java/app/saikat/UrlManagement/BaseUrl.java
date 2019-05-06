@@ -1,4 +1,4 @@
-package Url;
+package app.saikat.UrlManagement;
 
 public enum BaseUrl {
     REMOTE("https://saikat.app"),

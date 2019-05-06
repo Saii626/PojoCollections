@@ -1,8 +1,7 @@
-package Url;
+package app.saikat.UrlManagement;
 
-import ConfigurationManagement.impl.ConfigFile.JsonClassAdapter;
-import ResponseModels.Login;
-import ResponseModels.LoginStatus;
+import app.saikat.ConfigurationManagement.impl.ConfigFile.JsonClassAdapter;
+import app.saikat.UrlManagement.ResponseModels.*;
 import com.google.gson.annotations.JsonAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

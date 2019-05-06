@@ -1,5 +1,6 @@
-import ConfigurationManagement.Interfaces.ConfigurationManager;
-import Url.Url;
+package app.saikat.UrlManagement;
+
+import app.saikat.ConfigurationManagement.interfaces.ConfigurationManager;
 
 import java.io.IOException;
 

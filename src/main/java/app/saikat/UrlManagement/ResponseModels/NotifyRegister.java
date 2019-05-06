@@ -1,4 +1,4 @@
-package ResponseModels;
+package app.saikat.UrlManagement.ResponseModels;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,6 +1,9 @@
-import ConfigurationManagement.ConfigurationManagerInstanceCreator;
-import ConfigurationManagement.Interfaces.ConfigurationManager;
-import Url.Url;
+package app.saikat.UrlManagement;
+
+import app.saikat.ConfigurationManagement.ConfigurationManagerInstanceCreator;
+import app.saikat.ConfigurationManagement.interfaces.ConfigurationManager;
+import app.saikat.UrlManagement.Url;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Test;

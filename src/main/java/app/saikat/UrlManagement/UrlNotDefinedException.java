@@ -1,4 +1,4 @@
-package Url;
+package app.saikat.UrlManagement;
 
 public class UrlNotDefinedException extends Exception{
 

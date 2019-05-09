@@ -20,37 +20,49 @@ public class Url {
         Class response;
     }
 
-    private Map<String, Http> httpUrlMap;
-    private BaseUrl base_url;
-    private SocketBaseUrl socketBaseUrl;
+    private Map<String, Http> httpUrlList;
+    private Map<String, String> baseHttpList;
+    private Map<String, String> baseSocketList;
+    private String baseHttpUrl;
+    private String baseSocketUrl;
 
-    public Url() {
-        logger.debug("Creating new Url class");
-        this.httpUrlMap = new HashMap<>();
-        this.base_url = BaseUrl.REMOTE;
-        this.socketBaseUrl = SocketBaseUrl.REMOTE;
+    Url() {
+        this.httpUrlList = new HashMap<>();
+        this.baseHttpList = new HashMap<>();
+        this.baseSocketList = new HashMap<>();
     }
 
     public String get(String key) throws UrlNotDefinedException {
-        validateUrlNotNull(this.base_url.getUrl());
-        validateNotNull(key, this.httpUrlMap.get(key));
-        String url = this.httpUrlMap.get(key).url;
+        validateUrlNotNull(this.baseHttpUrl);
+        validateValueNotNull(key, "Url, response", httpUrlList);
+        validateValueNotNull(this.baseHttpUrl, "Base http url", baseHttpList);
+        String url = this.httpUrlList.get(key).url;
+        String baseUrl = this.baseHttpList.get(this.baseHttpUrl);
         validateUrlNotNull(url);
-        return this.base_url.getUrl().concat(url);
+        return baseUrl.concat(url);
     }
 
     public Class getResponseClass(String key) {
-        validateNotNull(key, this.httpUrlMap.get(key));
-        return this.httpUrlMap.get(key).response;
+        validateValueNotNull(key, "Url, response", httpUrlList);
+        return this.httpUrlList.get(key).response;
     }
 
-    public String getSocketBaseUrl() {
-        return this.socketBaseUrl.getUrl();
+    public String getbaseSocketUrl() throws UrlNotDefinedException {
+        validateUrlNotNull(this.baseSocketUrl);
+        validateValueNotNull(baseSocketUrl, "Socket base url", baseSocketList);
+        return this.baseSocketList.get(baseSocketUrl);
     }
 
-    public void changeBaseUrl(BaseUrl newBaseUrl) {
-        logger.warn("Changing baseUrl to: {}", newBaseUrl.name());
-        this.base_url = newBaseUrl;
+    public void changeHttpBaseUrl(String newBaseUrl) {
+        logger.warn("Changing http baseUrl to: {}", newBaseUrl);
+        validateValueNotNull(newBaseUrl, "Http base url", baseHttpList);
+        this.baseHttpUrl = newBaseUrl;
+    }
+
+    public void changeBaseSocketUrl(String baseSocketUrl) {
+        logger.warn("Changing websocket baseUrl to: {}", baseSocketUrl);
+        validateValueNotNull(baseSocketUrl, "Websocket base url", baseSocketList);
+        this.baseSocketUrl = baseSocketUrl;
     }
 
     public void updateUrl(String urlName, String url, Class responseClass) {
@@ -59,7 +71,7 @@ public class Url {
         http.url = url;
         http.response = responseClass;
 
-        this.httpUrlMap.put(urlName, http);
+        this.httpUrlList.put(urlName, http);
     }
 
     private void validateUrlNotNull(String url) throws UrlNotDefinedException {
@@ -68,14 +80,26 @@ public class Url {
         }
     }
 
-    private void validateNotNull(String key, Http http) {
-        if (http == null) {
-            throw new NullPointerException(String.format("Object associated with key %s is null/empty", key));
+    private void validateValueNotNull(String key, String objectName, Map<String, ?> map) {
+        if (map.get(key) == null) {
+            throw new NullPointerException(String.format("%s associated with key %s is null/empty", 
+            objectName, key));
         }
     }
 
     public static Url getDefault() {
         Url url = new Url();
+
+        url.baseHttpList.put("REMOTE", "https://saikat.app");
+        url.baseHttpList.put("LOCAL", "http://192.168.100.2");
+        url.baseHttpList.put("SELF", "http://127.0.0.1");
+
+        url.baseSocketList.put("REMOTE", "wss://saikat.app");
+        url.baseSocketList.put("LOCAL", "ws://192.168.100.2");
+        url.baseSocketList.put("SELF", "ws://127.0.0.1");
+
+        url.baseHttpUrl = "REMOTE";
+        url.baseSocketUrl = "REMOTE";
 
         url.updateUrl("login", "/login", Login.class);
         url.updateUrl("logout", "/logout", Login.class);

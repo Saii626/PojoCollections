@@ -1,6 +1,6 @@
 package app.saikat.UrlManagement;
 
-import app.saikat.ConfigurationManagement.ConfigurationManagerInstanceCreator;
+import app.saikat.ConfigurationManagement.ConfigurationManagerInstanceHandler;
 import app.saikat.ConfigurationManagement.interfaces.ConfigurationManager;
 import app.saikat.UrlManagement.Url;
 
@@ -20,10 +20,10 @@ public class UrlInstanceCreatorTest {
                 .setPrettyPrinting()
                 .create();
 
-        ConfigurationManager configurationManager = ConfigurationManagerInstanceCreator
+        ConfigurationManager configurationManager = ConfigurationManagerInstanceHandler
                 .createInstance(new File(System.getProperty("user.home")+"/url.conf"), gson);
 
-        Url url = UrlInstanceCreator.createInstance(configurationManager);
+        Url url = UrlInstanceHandler.createInstance(configurationManager);
 
         assert url!=null;
     }

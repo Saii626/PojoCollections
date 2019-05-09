@@ -7,9 +7,9 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UrlInstanceCreator {
+public class UrlInstanceHandler {
 
-    private static Logger logger = LoggerFactory.getLogger(UrlInstanceCreator.class.getSimpleName());
+    private static Logger logger = LoggerFactory.getLogger(UrlInstanceHandler.class.getSimpleName());
 
     public static Url createInstance(ConfigurationManager configurationManager) throws IOException {
 

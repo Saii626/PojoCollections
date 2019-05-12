@@ -1,4 +1,4 @@
 include ':ConfigurationManagement'
-project(':ConfigurationManagement').projectDir = file('../ConfigurationManagement_gradle')
+project(':ConfigurationManagement').projectDir = file('../ConfigurationManagement')
 rootProject.name = 'UrlManagement'
 

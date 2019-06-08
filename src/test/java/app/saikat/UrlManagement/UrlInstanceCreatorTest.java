@@ -2,7 +2,6 @@ package app.saikat.UrlManagement;
 
 import app.saikat.ConfigurationManagement.ConfigurationManagerInstanceHandler;
 import app.saikat.ConfigurationManagement.interfaces.ConfigurationManager;
-import app.saikat.UrlManagement.Url;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -21,10 +20,10 @@ public class UrlInstanceCreatorTest {
                 .create();
 
         ConfigurationManager configurationManager = ConfigurationManagerInstanceHandler
-                .createInstance(new File(System.getProperty("user.home")+"/url.conf"), gson);
+                .createInstance(new File(System.getProperty("user.home")+"/test/url.conf"));
 
-        Url url = UrlInstanceHandler.createInstance(configurationManager);
+        UrlManager urlManager = UrlInstanceHandler.createInstance(configurationManager);
 
-        assert url!=null;
+        assert urlManager.getHttpUrl(Url.values()[0]) != null;
     }
 }

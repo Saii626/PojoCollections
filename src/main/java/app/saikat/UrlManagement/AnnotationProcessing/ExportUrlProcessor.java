@@ -98,7 +98,7 @@ public class ExportUrlProcessor extends AbstractProcessor {
                 .build();
 
             MethodSpec pathGetter = MethodSpec.methodBuilder("getPath")
-                .addModifiers(Modifier.PUBLIC)
+                // .addModifiers(Modifier.PUBLIC)
                 .returns(String.class)
                 .addStatement("return this.path")
                 .build();
@@ -132,6 +132,7 @@ public class ExportUrlProcessor extends AbstractProcessor {
             String projectDir = System.getenv("PROJECT_DIR");
 
             JavaFile.builder("app.saikat.UrlManagement", enumBuilder.build())
+            .skipJavaLangImports(true)
             .build()
             .writeTo(new File(projectDir + "/UrlManagement/src/main/java"));
 

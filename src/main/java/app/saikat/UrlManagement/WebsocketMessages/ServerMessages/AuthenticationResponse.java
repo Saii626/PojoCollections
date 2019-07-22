@@ -1,4 +1,4 @@
-package app.saikat.UrlManagement.WebsocketMessages;
+package app.saikat.UrlManagement.WebsocketMessages.ServerMessages;
 
 import java.util.Map;
 

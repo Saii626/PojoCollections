@@ -28,11 +28,13 @@ public class UrlManager implements PostProcessable {
     }
 
     private String checkedGet(String base, Map<String, String> map) throws UrlNotDefinedException {
-        if (base == null || map.get(base) == null) {
-            throw new UrlNotDefinedException(base);
+        if (base != null) {
+            String val = map.get(base);
+            if (val != null) {
+                return val;
+            }
         }
-
-        return map.get(base);
+        throw new UrlNotDefinedException(base);
     }
 
     public static UrlManager getDefault() {

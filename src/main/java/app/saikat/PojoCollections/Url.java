@@ -1,7 +1,7 @@
-package app.saikat.UrlManagement;
+package app.saikat.PojoCollections;
 
-import app.saikat.UrlManagement.RequestObjects.AddDevice;
-import app.saikat.UrlManagement.ResponseObjects.CreatedDevice;
+import app.saikat.PojoCollections.RequestObjects.AddDevice;
+import app.saikat.PojoCollections.ResponseObjects.CreatedDevice;
 
 /**
  * Generated class. Not to be modified directly

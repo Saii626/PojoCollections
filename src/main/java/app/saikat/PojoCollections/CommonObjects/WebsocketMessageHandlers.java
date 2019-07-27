@@ -1,4 +1,4 @@
-package app.saikat.UrlManagement.CommonObjects;
+package app.saikat.PojoCollections.CommonObjects;
 
 import java.util.HashMap;
 import java.util.List;

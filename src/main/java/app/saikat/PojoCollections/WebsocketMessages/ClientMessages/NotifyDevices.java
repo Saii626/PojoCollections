@@ -1,12 +1,12 @@
-package app.saikat.UrlManagement.WebsocketMessages.ClientMessages;
+package app.saikat.PojoCollections.WebsocketMessages.ClientMessages;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
 
-import app.saikat.UrlManagement.CommonObjects.Tuple;
-import app.saikat.UrlManagement.WebsocketMessages.ServerMessages.Notification;
+import app.saikat.PojoCollections.CommonObjects.Tuple;
+import app.saikat.PojoCollections.WebsocketMessages.ServerMessages.Notification;
 
 public class NotifyDevices {
 

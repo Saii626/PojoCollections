@@ -1,4 +1,4 @@
-package app.saikat.UrlManagement.WebsocketMessages.ClientMessages;
+package app.saikat.PojoCollections.WebsocketMessages.ClientMessages;
 
 public class GetDeviceList {
 

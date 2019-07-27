@@ -1,10 +1,10 @@
-package app.saikat.UrlManagement.WebsocketMessages.ServerMessages;
+package app.saikat.PojoCollections.WebsocketMessages.ServerMessages;
 
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
-import app.saikat.UrlManagement.ResponseObjects.CreatedDevice;
+import app.saikat.PojoCollections.ResponseObjects.CreatedDevice;
 
 public class DeviceList {
 

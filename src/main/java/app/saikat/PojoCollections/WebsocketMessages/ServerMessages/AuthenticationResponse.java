@@ -1,10 +1,10 @@
-package app.saikat.UrlManagement.WebsocketMessages.ServerMessages;
+package app.saikat.PojoCollections.WebsocketMessages.ServerMessages;
 
 import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
 
-import app.saikat.UrlManagement.CommonObjects.Status;
+import app.saikat.PojoCollections.CommonObjects.Status;
 
 public class AuthenticationResponse {
 

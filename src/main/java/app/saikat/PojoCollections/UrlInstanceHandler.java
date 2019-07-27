@@ -1,4 +1,4 @@
-package app.saikat.UrlManagement;
+package app.saikat.PojoCollections;
 
 import app.saikat.ConfigurationManagement.interfaces.ConfigurationManager;
 

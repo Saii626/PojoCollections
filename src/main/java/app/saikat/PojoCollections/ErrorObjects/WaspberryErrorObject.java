@@ -1,4 +1,4 @@
-package app.saikat.UrlManagement.ErrorObjects;
+package app.saikat.PojoCollections.ErrorObjects;
 
 import java.util.Date;
 

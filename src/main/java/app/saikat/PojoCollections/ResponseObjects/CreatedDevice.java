@@ -1,4 +1,4 @@
-package app.saikat.UrlManagement.ResponseObjects;
+package app.saikat.PojoCollections.ResponseObjects;
 
 import java.util.UUID;
 

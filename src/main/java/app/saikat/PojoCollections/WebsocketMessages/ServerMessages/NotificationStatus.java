@@ -1,4 +1,4 @@
-package app.saikat.UrlManagement.WebsocketMessages.ServerMessages;
+package app.saikat.PojoCollections.WebsocketMessages.ServerMessages;
 
 public enum NotificationStatus {
 

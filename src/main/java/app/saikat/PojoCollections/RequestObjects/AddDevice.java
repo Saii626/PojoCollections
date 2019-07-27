@@ -1,4 +1,4 @@
-package app.saikat.UrlManagement.RequestObjects;
+package app.saikat.PojoCollections.RequestObjects;
 
 public class AddDevice {
     private String name;

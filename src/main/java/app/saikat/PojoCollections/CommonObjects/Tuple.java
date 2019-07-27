@@ -1,4 +1,4 @@
-package app.saikat.UrlManagement.CommonObjects;
+package app.saikat.PojoCollections.CommonObjects;
 
 public class Tuple<X, Y> {
     public X first;

@@ -1,4 +1,4 @@
-package app.saikat.UrlManagement;
+package app.saikat.PojoCollections;
 
 public class UrlNotDefinedException extends Exception{
 

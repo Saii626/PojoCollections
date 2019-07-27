@@ -1,5 +1,5 @@
-# UrlManagement
-Submodule for managing urls
+# PojoCollections
+Submodule containing lots of common objects
 
 ### How to use:
 1. Build the project

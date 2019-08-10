@@ -1,4 +1,2 @@
-include ':ConfigurationManagement'
-project(':ConfigurationManagement').projectDir = file('../ConfigurationManagement')
 rootProject.name = 'PojoCollections'
 

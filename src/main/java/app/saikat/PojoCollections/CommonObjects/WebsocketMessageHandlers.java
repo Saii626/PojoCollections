@@ -6,9 +6,9 @@ import java.util.Map;
 
 public abstract class WebsocketMessageHandlers {
 
-    protected Map<Class<?>, List<Tuple<Class<?>, String>>> handlers = new HashMap<>();
+	protected Map<Class<?>, List<Tuple<Class<?>, String>>> handlers = new HashMap<>();
 
-    public Map<Class<?>, List<Tuple<Class<?>, String>>> getHandlers() {
-        return handlers;
-    }
+	public Map<Class<?>, List<Tuple<Class<?>, String>>> getHandlers() {
+		return handlers;
+	}
 }

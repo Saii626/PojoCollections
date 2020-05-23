@@ -1,4 +1,1 @@
-include ':LogManagement'
-project(':LogManagement').projectDir = file('../LogManagement')
-
 rootProject.name = 'PojoCollections'
